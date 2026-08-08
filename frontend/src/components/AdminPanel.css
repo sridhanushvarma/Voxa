@@ -1,0 +1,236 @@
+.admin-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 24px;
+}
+
+.admin-modal {
+  width: min(820px, 100%);
+  max-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.admin-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.admin-head h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+  color: var(--accent-bright);
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+}
+
+.admin-tabs button {
+  flex: 1;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-radius: 6px;
+  transition: all var(--speed) var(--ease);
+}
+
+.admin-tabs button.active {
+  color: var(--accent-bright);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.admin-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.intent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.intent-card {
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  transition: all var(--speed) var(--ease);
+}
+
+.intent-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.intent-card-name {
+  font-weight: 700;
+  color: var(--accent-bright);
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.intent-card-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.intent-card-action {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.train-pane,
+.test-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.train-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+select.field-input,
+textarea.field-input {
+  width: 100%;
+}
+
+.train-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.train-card {
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+}
+
+.train-card-head {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.train-count {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-radius: 999px;
+  padding: 1px 9px;
+  font-size: 11px;
+}
+
+.train-utt {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  padding: 2px 0;
+}
+
+.train-more {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+
+.test-result {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tr-row {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+}
+
+.tr-row strong {
+  min-width: 90px;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding-top: 2px;
+}
+
+.tr-row span {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.tr-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.tr-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+.tr-score span:first-child {
+  width: 120px;
+}
+
+.tr-score span:last-child {
+  width: 40px;
+  text-align: right;
+}
+
+.tr-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-3);
+  overflow: hidden;
+}
+
+.tr-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+  border-radius: 999px;
+}
+
+@media (max-width: 720px) {
+  .tr-row { flex-direction: column; gap: 4px; }
+}

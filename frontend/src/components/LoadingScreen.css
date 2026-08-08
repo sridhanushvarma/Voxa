@@ -1,0 +1,115 @@
+.loading-screen {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.loading-core {
+  width: min(560px, 90vw);
+  text-align: center;
+  padding: 0 24px;
+}
+
+.boot-logo {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+}
+
+.boot-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  box-shadow: 0 0 24px var(--accent-glow);
+  animation: spin 1.1s linear infinite;
+}
+
+.boot-ring::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-bottom-color: var(--secondary);
+  animation: spin 1.8s linear infinite reverse;
+}
+
+.boot-mark {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--accent-bright);
+  text-shadow: 0 0 18px var(--accent-glow);
+}
+
+.boot-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 14px;
+  color: var(--accent-bright);
+  text-shadow: 0 0 22px var(--accent-glow), 0 0 44px var(--accent-glow);
+  animation: pulseGlow 2.6s ease-in-out infinite;
+}
+
+.boot-sub {
+  margin: 6px 0 26px;
+  font-size: 12px;
+  letter-spacing: 7px;
+  color: var(--text-dim);
+}
+
+.boot-console {
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  min-height: 168px;
+  font-size: 12.5px;
+  color: var(--ok);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.boot-line {
+  padding: 2px 0;
+  white-space: pre;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--ok) 40%, transparent);
+}
+
+.boot-cursor {
+  color: var(--accent);
+  animation: blink 1s steps(1) infinite;
+}
+
+.boot-progress {
+  margin-top: 22px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-2);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.boot-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-bright));
+  box-shadow: 0 0 14px var(--accent-glow);
+  transition: width 0.3s var(--ease);
+}
+
+.boot-progress-label {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}

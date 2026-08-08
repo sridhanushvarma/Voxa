@@ -1,0 +1,86 @@
+# Docker Compose configuration for Voxa CLI
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: voxa_postgres
+    environment:
+      POSTGRES_DB: voxa_cli
+      POSTGRES_USER: voxa_user
+      POSTGRES_PASSWORD: voxa_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - voxa_network
+
+  # Redis for session storage (optional)
+  redis:
+    image: redis:7-alpine
+    container_name: voxa_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - voxa_network
+
+  # Backend API
+  backend:
+    build: ./backend
+    container_name: voxa_backend
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://voxa_user:voxa_password@postgres:5432/voxa_cli
+      - REDIS_URL=redis://redis:6379
+      - SECRET_KEY=your-super-secret-key-change-this-in-production
+      - JWT_SECRET_KEY=your-jwt-secret-key-change-this-in-production
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./backend:/app
+      - ./Voxa.py:/app/Voxa.py
+      - ./knowledge_base.json:/app/knowledge_base.json
+    networks:
+      - voxa_network
+
+  # Frontend
+  frontend:
+    build: ./frontend
+    container_name: voxa_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - voxa_network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: voxa_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - voxa_network
+
+volumes:
+  postgres_data:
+
+networks:
+  voxa_network:
+    driver: bridge

@@ -1,0 +1,24 @@
+# This file is used to configure the behavior of web server when a file is not
+# found, if no files match the <url> request, and the request is not a directory.
+# The last rule in this file catches all requests and serves the index.html file
+# so that the client-side routing can work properly.
+
+# This allows client-side routing to work properly
+# All requests that don't match a file or directory will be served index.html
+# This is necessary for React Router to work correctly
+
+# Serve index.html for all routes
+# This enables client-side routing
+# Without this, refreshing the page on a route like /chat would result in a 404
+
+# The order of these rules matters:
+# 1. First, try to serve the requested file
+# 2. If the file doesn't exist, serve index.html
+# 3. This allows React Router to handle the routing
+
+# This is a standard configuration for single-page applications
+# It ensures that all routes are handled by the React application
+# rather than the web server trying to find physical files
+
+# Note: This file is used by the development server and build process
+# It's automatically included when using react-scripts

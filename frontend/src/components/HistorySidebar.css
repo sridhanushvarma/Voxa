@@ -1,0 +1,177 @@
+.sidebar-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.history-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1201;
+  width: min(400px, 100vw);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  border-left: 1px solid var(--border-strong);
+  padding: 20px;
+}
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.sidebar-head h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: var(--accent-bright);
+  text-transform: uppercase;
+}
+
+.sidebar-x {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--danger);
+  border: 1px solid color-mix(in srgb, var(--danger) 40%, transparent);
+  transition: all var(--speed) var(--ease);
+}
+
+.sidebar-x:hover {
+  background: var(--danger);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.new-conv {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.history-empty {
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 13px;
+  padding: 50px 16px;
+  line-height: 1.7;
+}
+
+.history-item {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color var(--speed) var(--ease),
+    box-shadow var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.history-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateX(-3px);
+}
+
+.history-item.active {
+  border-color: var(--accent-bright);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg-1));
+}
+
+.history-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.history-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  padding-right: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rename-input {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--bg-0);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.history-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.history-item-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity var(--speed) var(--ease);
+}
+
+.history-item:hover .history-item-actions {
+  opacity: 1;
+}
+
+.history-item-actions button {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  border-radius: 6px;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  transition: all var(--speed) var(--ease);
+}
+
+.history-item-actions button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.history-item-actions button.del:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+@media (max-width: 720px) {
+  .history-sidebar { width: 100vw; }
+}

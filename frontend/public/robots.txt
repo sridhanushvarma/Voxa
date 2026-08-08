@@ -1,0 +1,8 @@
+# Voxa CLI - Robots.txt
+# Allow all crawlers to access the application
+
+User-agent: *
+Allow: /
+
+# Sitemap location (if you add one later)
+# Sitemap: https://your-domain.com/sitemap.xml

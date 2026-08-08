@@ -1,0 +1,36 @@
+{
+    "facts": {
+        "python": "Python is a high-level, interpreted programming language known for its readability and versatility.",
+        "chatbot": "A chatbot is a software application that uses artificial intelligence to simulate conversation with users.",
+        "ai": "Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think and learn like humans.",
+        "calculation": "I can perform various calculations. Try asking me something like 'calculate 5 plus 3' or 'what is 10 times 4'.",
+        "weather": "I can provide weather information for any location. Try asking 'what's the weather in London' or 'weather forecast for New York'.",
+        "search": "I can search the web for information. Try saying 'search for latest news' or 'find information about climate change'."
+    },
+    "qa_pairs": [
+        {
+            "question": "What is your name?",
+            "answer": "I am a voice-enabled smart chatbot designed to assist you."
+        },
+        {
+            "question": "How do you work?",
+            "answer": "I use natural language processing to understand your queries and provide relevant responses."
+        },
+        {
+            "question": "Who created you?",
+            "answer": "I was created as a Python programming project to demonstrate NLP and voice interaction capabilities."
+        },
+        {
+            "question": "Can you do calculations?",
+            "answer": "Yes, I can perform basic calculations. Try asking me something like 'calculate 5 plus 3' or 'what is 10 times 4'."
+        },
+        {
+            "question": "Can you check the weather?",
+            "answer": "Yes, I can provide weather information for any location. Try asking 'what's the weather in London' or 'weather forecast for New York'."
+        },
+        {
+            "question": "Can you search the web?",
+            "answer": "Yes, I can search the web for information. Try saying 'search for latest news' or 'find information about climate change'."
+        }
+    ]
+}
